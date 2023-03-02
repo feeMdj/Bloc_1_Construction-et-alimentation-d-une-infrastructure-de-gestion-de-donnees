@@ -8,7 +8,16 @@ video:
 
 Kayak is a travel search engine that helps user plan their next trip at the best price.
 
-# Scope of the Project 🚧
+## Scope of the Project 🚧
+The marketing team needs help on a new project. After doing some user research, the team discovered that 70% of their users who are planning a trip would like to have more information about the destination they are going to.
+Therefore, Kayak Marketing Team would like to create an application that will recommend where people should plan their next holidays. The application should be based on real data about:
+
+    Weather
+    Hotels in the area
+
+The application should then be able to recommend the best destinations and hotels based on the above variables at any given time.
+
+## Steps
 
 - Collect Data:
   1- Using 2 API's to get GPS coordinates and the weather of 35 cities in France
