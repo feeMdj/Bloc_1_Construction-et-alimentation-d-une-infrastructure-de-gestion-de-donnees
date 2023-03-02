@@ -8,7 +8,7 @@ video:
 
 Kayak is a travel search engine that helps user plan their next trip at the best price.
 
-# The scope of the project
+# Scope of the Project 🚧
 
 - Collect Data:
   1- Using 2 API's to get GPS coordinates and the weather of 35 cities in France
