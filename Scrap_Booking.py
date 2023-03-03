@@ -16,42 +16,39 @@ class BookingSpider(scrapy.Spider):
     def start_requests(self):
         yield scrapy.Request('https://www.booking.com', callback=self.form_input)
         
-    def form_input(self, response):
+    def form_input(self, response): #To request the website for each city
         
         villes = ["Mont Saint Michel","St Malo","Bayeux","Le Havre","Rouen","Paris","Amiens","Lille","Strasbourg","Chateau du Haut Koenigsbourg","Colmar","Eguisheim","Besancon","Dijon","Annecy","Grenoble","Lyon","Gorges du Verdon","Bormes les Mimosas","Cassis","Marseille", "Aix en Provence","Avignon","Uzes","Nimes","Aigues Mortes","Saintes Maries de la mer","Collioure","Carcassonne","Ariege","Toulouse","Montauban","Biarritz","Bayonne","La Rochelle"]
         for ville in villes:
-            yield scrapy.FormRequest.from_response(response, formdata={'ss': ville}, callback=self.after_search, meta={'city':ville})
+            yield scrapy.FormRequest.from_response(response, formdata={'ss': ville}, callback=self.after_search, meta={'city':ville}) #the cities are passed as variable to the next function
 
         
-    def after_search(self, response):
+    def after_search(self, response): #Scrapping the hotel information of the result page for each city
 
         hotels = response.css('div.a826ba81c4.fe821aea6c.fa2f36ad22.afd256fc79.d08f526e0d.ed11e24d01.ef9845d4b3.da89aeb942')  
         ville = response.request.meta["city"]
         for hotel in hotels:
 
-                #name= hotel.xpath('div[1]/div[2]/div/div/div[1]/div/div[1]/div/h3/a/div[1]/text()').get()
-                #link=hotel.xpath('div[1]/div[2]/div/div/div[1]/div/div[1]/div/h3/a').attrib["href"]
                 name=hotel.css('div.fcab3ed991.a23c043802::text').get()
                 link=hotel.css('a.e13098a59f::attr(href)').get()
                 score=hotel.css('div.b5cd09854e.d10a6220b4::text').get()
-                #score=hotel.xpath('div[1]/div[2]/div/div/div[2]/div[1]/a/span/div/div[1]/text()').get()
                 description=hotel.css('div.d8eab2cf7f::text').get()
 
-                dico= {
+                dico= { #we create a dictionary with these collected information
                 'name': name,
                 'url': link,
                 'score': score,
                 'description': description,
                 'city':ville
             }
-                yield response.follow(url=link, callback=self.parse_hotel, meta={"dico":dico})
+                yield response.follow(url=link, callback=self.parse_hotel, meta={"dico":dico}) #we pass this dico as variable to the next function
 
-    def parse_hotel(self, response):
+    def parse_hotel(self, response): # 
 
-            all_data = response.request.meta["dico"]
+            all_data = response.request.meta["dico"] #we go into each hotel description to get the gps coordinates
             gps= response.css('a.jq_tooltip.loc_block_link_underline_fix.bui-link.show_on_map_hp_link.show_map_hp_link').attrib['data-atlas-latlng']
 
-            all_data["gps"] = gps
+            all_data["gps"] = gps # we add it to our dictionnary
         
             yield all_data
 
