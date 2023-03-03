@@ -34,9 +34,9 @@ The application should then be able to recommend the best destinations and hotel
      
 ## Files:
 You'll find these files in the repository:
-  - Requirements.txt 
-  - ScrapBooking.py: the python script to scrap booking.com
+  - Requirements.txt: the libraries you'll need
+  - Scrap_Booking.py: the python script to scrap booking.com
   - projetkayak.ipynb: the global notebook with the whole project
-  - the .json files with the API and scrapping resultas
-  - the csv file kayak..... put on AWS 
-  - the csv file kayak.csv loaded from AWS
+  - the .json files with the API and scrapping results
+  - kayakdata.csv: csv file put on AWS 
+  - kayak.csv: file loaded from AWS
