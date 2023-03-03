@@ -1,5 +1,5 @@
 # Bloc N°1
-## Construction_et_alimentation_d_infrastructure_de_gestion_de_donnees
+## Construction et alimentation d'une infrastructure de gestion de donnée
 
 ## Vidéo:
 [LIEN VIDEO DE PRESENTATION](https://share.vidyard.com/watch/MmWJycfYebg2VFEiabr678?)
