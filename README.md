@@ -4,6 +4,9 @@
 ## Vidéo:
 [LIEN VIDEO DE PRESENTATION](https://share.vidyard.com/watch/MmWJycfYebg2VFEiabr678?)
 
+Contact:
+feriel.medjaoui@gmail.com
+
 # Plan your trip with Kayak
 ![image](https://user-images.githubusercontent.com/115455973/222426897-6d77f93f-5368-4253-b27e-0d8c6f1ac00f.png)
 
